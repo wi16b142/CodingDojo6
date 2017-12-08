@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CodingDojo6"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="CodingDojo6 by Sascha Böck" Height="350" Width="520">
+        Title="CodingDojo6 by Sascha Böck" Height="350" Width="610.487">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,16 +14,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="145"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding Items}">
+        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding Selection}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="120">
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="4" Width="120">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding Image}" Width="50" Height="50"/>
+                            <Image Source="{Binding Image}" Margin="2" Width="50" Height="50"/>
                             <Label Content="{Binding Description}" VerticalAlignment="Center" Margin="2"/>
                         </StackPanel>
                     </Border>
@@ -31,6 +31,27 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <ItemsControl Grid.Column="1" ItemsSource="{Binding Selection.Items}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="4" Width="200">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Margin="1,0" Width="50" Height="50"/>
+                                <Label Content="{Binding Description}" VerticalAlignment="Center" Width="110" Margin="1,0"/>
+                                <Label Content="{Binding AgeRecc}" Width="40" VerticalAlignment="Center" Margin="1,0"/>
+                            </StackPanel>
+                            <Button Content="buy" Width="40" Margin="5"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
     </Grid>
 </Window>

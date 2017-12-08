@@ -116,8 +116,18 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\lego.jpg" />
     <Resource Include="Images\playmobil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lego.jpg" />
+    <Resource Include="Images\lego1.jpg" />
+    <Resource Include="Images\lego2.jpg" />
+    <Resource Include="Images\lego3.jpg" />
+    <Resource Include="Images\lego4.jpg" />
+    <Resource Include="Images\playmobil1.jpg" />
+    <Resource Include="Images\playmobil2.jpg" />
+    <Resource Include="Images\playmobil3.jpg" />
+    <Resource Include="Images\playmobil4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
