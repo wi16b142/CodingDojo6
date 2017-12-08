@@ -3,22 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CodingDojo6"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="CodingDojo6 by Sascha Böck" Height="350" Width="610.487">
+        Title="CodingDojo6 by Sascha Böck" Height="510.648" Width="616.463">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="220"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="385.6"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="145"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding Selection}">
+        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding Selection}" Grid.ColumnSpan="2" Margin="0,0,459.4,5.6">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="4" Width="120">
@@ -31,22 +30,45 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ItemsControl Grid.Column="1" ItemsSource="{Binding Selection.Items}">
+
+        <ItemsControl Grid.Column="1" ItemsSource="{Binding Selection.Items}" Margin="11.2,0,0.4,5.6">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel/>
+                    <WrapPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="4" Width="200">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Image}" Margin="1,0" Width="50" Height="50"/>
-                                <Label Content="{Binding Description}" VerticalAlignment="Center" Width="110" Margin="1,0"/>
-                                <Label Content="{Binding AgeRecc}" Width="40" VerticalAlignment="Center" Margin="1,0"/>
+                    <StackPanel>
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Width="200">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" Height="50" Width="50" Margin="1,0"/>
+                                    <Label Content="{Binding Description}" Width="120" VerticalAlignment="Center" Margin="1,0"/>
+                                    <Label Content="{Binding AgeRecc}" Width="30" VerticalAlignment="Center" Margin="1,0"/>
+                                </StackPanel>
+                                <Button Content="Buy" 
+                                        Command="{Binding DataContext.BuyBtnClicked, RelativeSource={RelativeSource AncestorType=ItemsControl}}" 
+                                        CommandParameter="{Binding}"
+                                        Width="40" HorizontalAlignment="Center" Margin="2"/>
                             </StackPanel>
-                            <Button Content="buy" Width="40" Margin="5"/>
+                        </Border>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Wishlist}" Grid.ColumnSpan="2">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Width="70" Height="70">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Image}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
