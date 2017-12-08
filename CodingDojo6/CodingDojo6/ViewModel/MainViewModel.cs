@@ -1,34 +1,31 @@
 using GalaSoft.MvvmLight;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows.Media.Imaging;
 
 namespace CodingDojo6.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        private ObservableCollection<ItemsVM> items;
+        private ObservableCollection<ItemsVM> wishlist;
+
+        public ObservableCollection<ItemsVM> Wishlist
+        {
+            get { return wishlist; }
+            set { wishlist = value;  RaisePropertyChanged(); }
+        }
+
+        public ObservableCollection<ItemsVM> Items
+        {
+            get { return items; }
+            set { items = value; RaisePropertyChanged(); }
+        }
+
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            Items.Add(new ItemsVM("Lego", "-", new BitmapImage(new Uri("Images/lego.jpg", UriKind.Relative))));
+            Items.Add(new ItemsVM("Playmobil", "-", new BitmapImage(new Uri("Images/playmobil.jpg", UriKind.Relative))));
         }
     }
 }

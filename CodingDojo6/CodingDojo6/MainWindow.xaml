@@ -6,8 +6,30 @@
         xmlns:local="clr-namespace:CodingDojo6"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="CodingDojo6 by Sascha Böck" Height="350" Width="525">
+        Title="CodingDojo6 by Sascha Böck" Height="350" Width="520">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding Items}">
+            <DataTemplate>
+                <Border BorderBrush="LightGray" CornerRadius="4" BorderThickness="2" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Image}" Margin="3" Width="40"/>
+                        <Label Content="{Binding Description}" Margin="3"/>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+        </ListBox>
+
         
+        
+
     </Grid>
 </Window>
